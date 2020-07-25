@@ -11,6 +11,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CalculScoreComponent implements OnInit , OnDestroy{
   @Input() name;
+  focus: any;
+  focus1: any;
   sectionTitle:string = "Score";
   subscription: Subscription;
   choosedSection;
