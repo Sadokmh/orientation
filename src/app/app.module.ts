@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ScoreComponent } from './score/score.component';
 import { LandingComponent } from './landing/landing.component';
 import { CalculScoreComponent } from './score/calcul-score/calcul-score.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
