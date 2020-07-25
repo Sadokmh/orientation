@@ -7,12 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
-  },
-  "engines": {
-    "node": "6.11.0",
-    "npm": "3.10.10"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
