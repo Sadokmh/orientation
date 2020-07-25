@@ -1,0 +1,229 @@
+<div class="modal-header">
+    <h5 class="modal-title text-center">Calcul Score BAC 2k20</h5>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body"> 
+    
+            <form [formGroup]="formScore" (submit)="calculMoy()" class="contact-form">
+                <ngb-alert *ngIf="showError" type="danger"  [dismissible]="false">
+                    <div class="container">
+                        <ng-container >
+                            <i class="nc-icon"></i>
+                        </ng-container>
+            
+                        
+                        <a >
+                            <i class="nc-icon nc-alert-circle-i"></i>
+                        </a>
+                        Veuillez vérifier tous les champs
+                    </div>
+                </ngb-alert>
+                <ngb-alert *ngIf="score" type="info"  [dismissible]="false">
+                    <div class="container">
+                        <ng-container >
+                            <i class="nc-icon"></i>
+                        </ng-container>
+            
+                        
+                        <a >
+                            <i class="nc-icon nc-alert-circle-i"></i>
+                        </a>
+                        votre score est <span class="score-display">{{score}}</span> points 
+                        <br>
+                        <div class="mt-2 d-flex justify-content-center">
+                            <span class="mt-2">
+                                Pour avoir des informations sur les facultés, le système LMD, .. 
+                            <br>
+                            Marahbe bik dans notre
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a class="ml-4" target="_blank" href="https://www.facebook.com/groups/654680431925321" class="btn btn-outline-neutral btn-round">GROUPE FB</a>
+
+                        </div>
+
+                    </div>
+                </ngb-alert>
+                <div class="row">
+                    <div class="col-md-6" *ngIf="choosedSection && (choosedSection === 'math' || choosedSection === 'sciences' || choosedSection === 'info' || choosedSection === 'tech' || choosedSection === 'eco')">
+                        <label>Mathématique</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="math" class="form-control" placeholder="Math" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && (choosedSection === 'math' || choosedSection === 'sciences' || choosedSection === 'sport' )">
+                        <label>Sciences</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="sc" class="form-control" placeholder="Sc" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && (choosedSection === 'math' || choosedSection === 'sciences' || choosedSection === 'info' || choosedSection === 'sport' || choosedSection === 'tech')">
+                        <label>Physique</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="ph" class="form-control" placeholder="Ph" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection">
+                        <label>Français</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="fr" class="form-control" placeholder="Fr" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection">
+                        <label>Anglais</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="en" class="form-control" placeholder="Ang" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && choosedSection === 'tech'">
+                        <label>Technique</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="tech" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && choosedSection === 'lettre'">
+                        <label>Arabe</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="ar" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && (choosedSection === 'lettre' || choosedSection === 'eco')">
+                        <label>Histoire Géo</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="hg" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && choosedSection === 'eco'">
+                        <label>Economie</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="eco" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && choosedSection === 'eco'">
+                        <label>Gestion</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="gest" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && choosedSection === 'info'">
+                        <label>TIC</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="tic" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && choosedSection === 'info'">
+                        <label>Base de données</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="bd" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && choosedSection === 'info'">
+                        <label>Algorithme</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="algo" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && (choosedSection === 'sport' || choosedSection === 'lettre')">
+                        <label>Philosophie</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="philo" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && choosedSection === 'sport'">
+                        <label>Education physique</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="ep" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && choosedSection === 'sport'">
+                        <label>Sp. théorique</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="th" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection && choosedSection === 'sport'">
+                        <label>Sp. Pratique</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="sp" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="choosedSection">
+                        <label>Moyenne générale</label>
+                        <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                            <div class="input-group-prepend">
+                              
+                            </div>
+                            <input type="number" formControlName="mg" class="form-control" placeholder="MG" (focus)="focus=true" (blur)="focus=false" >
+                        </div>
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-danger btn-round">Ehssebli</button>
+
+                </div>
+            </form>
+
+</div>
+<div class="modal-footer">
+    <div class="left-side">
+        <button type="button" class="btn btn-default btn-link" (click)="activeModal.close('Close click')">Never mind</button>
+    </div>
+    <div class="divider"></div>
+    <div class="right-side">
+        <button type="button" class="btn btn-danger btn-link" (click)="activeModal.close('Close click')">Retour</button>
+    </div>
+</div>
